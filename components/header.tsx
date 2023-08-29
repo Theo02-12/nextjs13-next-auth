@@ -8,12 +8,16 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
+
+import { ThemeSwitcher } from './theme-switcher'
+
 import Link from 'next/link'
 import { AreaChart } from 'lucide-react'
+import { ShoppingBasket } from 'lucide-react'
 const Header = () => {
     return (
         <>
-            <div className='flex justify-between p-5 bg-gradient-to-r from-slate-600 to-slate-200'>
+            <div className='flex justify-between p-5 pe-[90px] bg-gradient-to-r from-slate-600 to-slate-200'>
                 <div className=''>
                     <h1>Test</h1>
                 </div>
@@ -26,8 +30,7 @@ const Header = () => {
                                     <ul className='grid p-4 lg:grid-cols-[.75fr_1fr]'>
                                         <li className='bg-gradient-to-r from-indigo-200 p-3 rounded'>
                                             <AreaChart />
-                                        </li>
-                                        {/* <li className='p-3'>test</li> */}
+                                        </li>                                    
                                         <Link href="/dashboard"  legacyBehavior passHref>
                                             <NavigationMenuLink className='p-3'>
                                                 Dashboard
@@ -38,13 +41,14 @@ const Header = () => {
                             </NavigationMenuContent>
                         </NavigationMenuItem>
                         <NavigationMenuItem>
-                            <NavigationMenuTrigger>Item two</NavigationMenuTrigger>
+                            <NavigationMenuTrigger className='mx-3'>Item two</NavigationMenuTrigger>
                             <NavigationMenuContent>
                             <div className='w-full'>
                                     <ul className='grid p-4 lg:grid-cols-[.75fr_1fr]'>
-                                        <li className='bg-gradient-to-r from-indigo-500 p-3 rounded'>link</li>
-                                        {/* <li className='p-3'>test</li> */}
-                                        <Link href="/dashboard"  legacyBehavior passHref>
+                                        <li className='bg-gradient-to-r from-indigo-200 p-3 rounded'>
+                                            <ShoppingBasket />
+                                        </li>                                        
+                                        <Link href="/articles"  legacyBehavior passHref>
                                             <NavigationMenuLink className='p-3'>
                                                 Articles
                                             </NavigationMenuLink>
@@ -54,6 +58,7 @@ const Header = () => {
                             </NavigationMenuContent>
                         </NavigationMenuItem>
                     </NavigationMenuList>
+                <ThemeSwitcher />
                 </NavigationMenu>
             </div>
         </>
