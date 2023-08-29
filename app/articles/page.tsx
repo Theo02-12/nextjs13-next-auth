@@ -1,4 +1,5 @@
 'use client'
+
 import React, { useState } from "react"
 import { Button } from "@/components/ui/button"
 import {
@@ -15,6 +16,7 @@ export default function Page() {
 
     const [title, setTitle] = useState<string>('')
     const [content, setContent] = useState<string>('')
+    const [file, setFile] = useState<File>()
 
 
     interface iArticles {
@@ -24,13 +26,28 @@ export default function Page() {
     }
     const [article, setArticle] = useState<iArticles[]>([])
 
-    const handleClick = (event: any) => {
+    const handleClick = async (event: any) => {
         event.preventDefault()
 
+        if(!file) return
+
+        try{
+            const data = new FormData()
+            data.set('file', file)
+
+            const res = await fetch('api/upload', {
+                method: 'POST',
+                body: data
+            })
+
+            if(!res.ok) throw new Error(await res.text())
+        }catch(e: any){
+            console.error(e)
+        }
+
+
         const newArticle = { id: new Date().getTime(), title: title, content: content }
-
         setArticle(prevArticles => [...prevArticles, newArticle])
-
         console.log(newArticle);
     }
 
@@ -54,6 +71,7 @@ export default function Page() {
                 <form onSubmit={handleClick}>
                     <Input type="text" placeholder="title" onChange={e => setTitle(e.target.value)} />
                     <Input type="text" placeholder="content" onChange={e => setContent(e.target.value)} />
+                    <Input  type="file" name="file" onChange={(e) => setFile(e.target.files?.[0])}/>
                     <Button>Envoyer</Button>
                 </form>
             </div>
