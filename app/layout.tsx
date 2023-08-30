@@ -22,10 +22,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <main>
-            <a href='/extra'>test</a>
-            <a href='/server'>server</a>
-            <a href='/api/auth/signout'>sign out</a>
-            <a href='/dashboard'>dashboard</a>
+            <a className='m-5 bg-cyan-800 p-3' href='/extra'>test</a>
+            <a className='m-5 bg-cyan-800 p-3' href='/server'>server</a>
+            <a className='m-5 bg-cyan-800 p-3' href='/api/auth/signout'>sign out</a>
+            <a className='m-5 bg-cyan-800 p-3' href='/dashboard'>dashboard</a>
+            <a className='m-5 bg-cyan-800 p-3' href='/api/auth/signin'>sign in</a>
             {children}
             </main>
         </ThemeProvider>
