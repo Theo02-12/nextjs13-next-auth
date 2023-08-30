@@ -21,7 +21,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <main>{children}</main>
+          <main>
+            <a href='/extra'>test</a>
+            <a href='/server'>server</a>
+            <a href='/api/auth/signout'>sign out</a>
+            <a href='/dashboard'>dashboard</a>
+            {children}
+            </main>
         </ThemeProvider>
       </body>
     </html>
